@@ -1,0 +1,24 @@
+{
+  "name": "socialnetwork",
+  "version": "1.0.0",
+  "description": "A mock backend for a social network application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArchRascal2988/socialNetwork.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArchRascal2988/socialNetwork/issues"
+  },
+  "homepage": "https://github.com/ArchRascal2988/socialNetwork#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongoose": "^6.3.4"
+  }
+}
