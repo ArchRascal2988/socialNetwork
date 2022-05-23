@@ -23,8 +23,15 @@ const userSchema= new Schema(
         thoughts: [Thought],
 
         friends: [this],
+    },
+    {
+        toJSON:{
+            virtuals: true
+        }
     }
 );
+
+userSchema.virtual("friendCount").get(()=> {return this.friends.length});
 
 const User= model("user", userSchema);
 
