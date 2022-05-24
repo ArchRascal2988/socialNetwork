@@ -1,10 +1,11 @@
-const {Schema, model}= require('mongoose');
+const { ObjectID } = require('bson');
+const {Schema}= require('mongoose');
 
 const reactionSchema= new Schema(
     {
         reactionId:{
-            type: ObjectId,
-            default: new ObjectId
+            type: ObjectID,
+            default: new ObjectID
         },
         reactionBody:{
             type: String,
@@ -21,7 +22,9 @@ const reactionSchema= new Schema(
         }
     },
     {
-        id:false
+        toJSON:{
+            getters:true
+        }
     }
 );
 
