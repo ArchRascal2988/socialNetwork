@@ -52,7 +52,7 @@ module.exports={
             !thought ? res.status(404).json({message: "No thought found with that id."})
             : User.findOneAndUpdate(
                 {username: thought.username},
-                {$pull: {thoughts:{thoughtId: thought._id}}},
+                {$pull: {thoughts:thought._id}},
                 ).then((user)=>{
                     !user ? res.status(400).json({message: "Something went wrong :("})
                     :res.status(200).json({message: "Thought deleted and associated user thoughts updated."})

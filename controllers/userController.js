@@ -42,7 +42,7 @@ module.exports={
     deleteUser(req,res){
         User.findOneAndDelete({_id:req.params.id}).then((user)=>{
             !user ? res.status(404).json({message: "No user found with that id."})
-            : Thought.deleteMany({_id:{$in: user.thoughts}})
+            : Thought.deleteMany({thoughtId:{$in: user.thoughts}})
         }).then(()=> res.status(200).json({message: "User and associated thoughts deleted."}))
         .catch((err)=>{
             console.log(err);
@@ -52,7 +52,7 @@ module.exports={
     addFriend(req,res){
         User.findOneAndUpdate(
             {_id:req.params.id},
-            {$addToSet: {friends: req.body}},
+            {$addToSet: {friends: req.params.friendId}},
             {runValidators: true, new: true}
             ).then((user)=>{
                 !user ? res.status(404).json({message: "No user found with that id."})
@@ -65,7 +65,7 @@ module.exports={
     removeFriend(req,res){
         User.findOneAndUpdate(
             {_id:req.params.id},
-            {$pull: {friends: {friendId: req.params.friendId}}},
+            {$pull: {friends: req.params.friendId}},
             {runValidators: true, new: true}
             ).then((user)=>{
                 !user ? res.status(404).json({message: "No user found with that id."})

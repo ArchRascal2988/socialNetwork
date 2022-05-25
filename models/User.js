@@ -19,12 +19,15 @@ const userSchema= new Schema(
             unique:true,
         },
 
-        thoughts: [{
+        thoughts: [
+            {
+            name: 'thoughtId',
             type: Schema.Types.ObjectId,
             ref: 'Thought'
         }],
 
         friends: [{
+            name: 'friendsId',
             type: Schema.Types.ObjectId,
             ref: 'User'
         }],
